@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PawPrivacy • Medaglietta Cane NFC Privacy Totale • QR Offline Senza Internet</title>
+  <meta name="description" content="Medaglietta cane NFC e QR code 100% privacy: nessun dato online, tutto salvato localmente su chip e QR embedded. Legno e resina artigianale a forma di zampa. Funziona senza internet – Android & iOS.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    .paw-bg { background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.65)), url('https://picsum.photos/id/1015/2000/1200'); }
+    .scan-animation { animation: scan 2.5s infinite; }
+    @keyframes scan { 0%,100% { transform: translateY(0); } 50% { transform: translateY(18px); } }
+    .cart-modal { animation: pop 0.3s ease; }
+    @keyframes pop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  </style>
+</head>
+<body class="bg-[#F8F4ED] text-gray-800 font-sans">
+
+  <!-- NAVBAR -->
+  <nav class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <i class="fa-solid fa-paw text-3xl text-emerald-700"></i>
+        <span class="text-2xl font-bold">PawPrivacy</span>
+      </div>
+      <div class="flex items-center gap-8">
+        <a href="#shop" class="font-medium hover:text-emerald-700">Shop</a>
+        <a href="#vantaggi" class="font-medium hover:text-emerald-700">Vantaggi</a>
+        <button onclick="toggleCart()" class="relative flex items-center gap-2 font-medium">
+          <i class="fa-solid fa-cart-shopping text-2xl"></i>
+          <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO con promozione -->
+  <section class="paw-bg h-screen flex items-center text-white">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <div class="inline-block bg-emerald-700 text-white text-sm px-6 py-2 rounded-full mb-6">CODICE PRIVACY20 → 20% sconto primo ordine</div>
+      <h1 class="text-6xl md:text-7xl font-bold mb-6">Medaglietta Cane Privacy<br>Zero Dati Online</h1>
+      <p class="text-2xl mb-10">NFC + QR embedded • Tutto offline • Legno & resina a forma di zampa</p>
+      <a href="#shop" class="bg-white text-emerald-800 px-12 py-5 rounded-2xl text-xl font-bold hover:scale-105 transition">Vai allo Shop</a>
+    </div>
+  </section>
+
+  <!-- SHOP INTERNO COMPLETO -->
+  <section id="shop" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-4">Scegli il tuo PawPrivacy</h2>
+      <p class="text-center text-xl mb-12">Spedizione gratis • Consegna 7-12 giorni • Realizzato a mano a Roma</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Prodotto 1 -->
+        <div class="bg-[#F8F4ED] rounded-3xl overflow-hidden shadow-xl group">
+          <img src="https://picsum.photos/id/201/600/400" class="w-full h-64 object-cover">
+          <div class="p-6">
+            <h3 class="font-bold text-xl">Standard Naturale</h3>
+            <p class="text-sm text-gray-600">4,5 cm • Legno rovere + resina trasparente</p>
+            <p class="text-3xl font-bold text-emerald-700 mt-4">39,90 €</p>
+            <button onclick="addToCart(1, 'Standard Naturale', 39.90)" class="mt-6 w-full bg-emerald-700 text-white py-4 rounded-2xl hover:bg-emerald-800">Aggiungi al carrello</button>
+          </div>
+        </div>
+
+        <!-- Prodotto 2 -->
+        <div class="bg-[#F8F4ED] rounded-3xl overflow-hidden shadow-xl group">
+          <img src="https://picsum.photos/id/160/600/400" class="w-full h-64 object-cover">
+          <div class="p-6">
+            <h3 class="font-bold text-xl">Colore Personalizzato</h3>
+            <p class="text-sm text-gray-600">Nero / Verde / Blu (+5 €)</p>
+            <p class="text-3xl font-bold text-emerald-700 mt-4">44,90 €</p>
+            <button onclick="addToCart(2, 'Colore Personalizzato', 44.90)" class="mt-6 w-full bg-emerald-700 text-white py-4 rounded-2xl hover:bg-emerald-800">Aggiungi al carrello</button>
+          </div>
+        </div>
+
+        <!-- Prodotto 3 -->
+        <div class="bg-[#F8F4ED] rounded-3xl overflow-hidden shadow-xl group">
+          <img src="https://picsum.photos/id/250/600/400" class="w-full h-64 object-cover">
+          <div class="p-6">
+            <h3 class="font-bold text-xl">Large per cani grandi</h3>
+            <p class="text-sm text-gray-600">6,5 cm</p>
+            <p class="text-3xl font-bold text-emerald-700 mt-4">42,90 €</p>
+            <button onclick="addToCart(3, 'Large', 42.90)" class="mt-6 w-full bg-emerald-700 text-white py-4 rounded-2xl hover:bg-emerald-800">Aggiungi al carrello</button>
+          </div>
+        </div>
+
+        <!-- Prodotto 4 -->
+        <div class="bg-[#F8F4ED] rounded-3xl overflow-hidden shadow-xl group border-2 border-emerald-700">
+          <img src="https://picsum.photos/id/300/600/400" class="w-full h-64 object-cover">
+          <div class="p-6">
+            <h3 class="font-bold text-xl">Bundle Glow + Extra QR</h3>
+            <p class="text-sm text-emerald-700 font-medium">Risparmia 10 €</p>
+            <p class="text-3xl font-bold text-emerald-700 mt-4">49,90 €</p>
+            <button onclick="addToCart(4, 'Bundle Glow', 49.90)" class="mt-6 w-full bg-emerald-700 text-white py-4 rounded-2xl hover:bg-emerald-800">Aggiungi al carrello</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARRELLO MODALE -->
+  <div id="cart-modal" class="hidden fixed inset-0 bg-black/70 z-[999] flex items-center justify-center">
+    <div class="bg-white rounded-3xl w-full max-w-md mx-4 cart-modal">
+      <div class="p-6 border-b flex justify-between">
+        <h3 class="text-2xl font-bold">Il tuo carrello</h3>
+        <button onclick="toggleCart()" class="text-3xl">×</button>
+      </div>
+      <div id="cart-items" class="p-6 space-y-6 max-h-[400px] overflow-auto"></div>
+      
+      <div class="p-6 border-t">
+        <div class="flex justify-between text-lg mb-2">
+          <span>Subtotale</span>
+          <span id="subtotal">0,00 €</span>
+        </div>
+        
+        <!-- CAMPO CODICE SCONTO -->
+        <div class="mt-4">
+          <label class="block text-sm mb-2 font-medium">Hai un codice sconto?</label>
+          <div class="flex gap-3">
+            <input id="discount-code" type="text" placeholder="es. PRIVACY20" class="flex-1 border rounded-2xl px-5 py-3 text-lg">
+            <button onclick="applyDiscount()" class="bg-emerald-700 text-white px-8 rounded-2xl font-medium">Applica</button>
+          </div>
+          <p id="discount-msg" class="text-sm mt-2 text-emerald-700 hidden"></p>
+        </div>
+        
+        <div class="flex justify-between text-2xl font-bold mt-6">
+          <span>Totale</span>
+          <span id="total">0,00 €</span>
+        </div>
+        
+        <button onclick="checkout()" class="w-full bg-emerald-700 text-white py-6 rounded-3xl text-xl mt-8 hover:bg-emerald-800 transition">
+          Procedi al pagamento
+        </button>
+        <p class="text-center text-xs mt-4 text-gray-500">Spedizione gratuita • Pagamento sicuro</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VANTAGGI (mantenuto dal precedente) -->
+  <!-- ... (puoi copiare la sezione #vantaggi dal messaggio precedente) ... -->
+
+  <script>
+    let cart = [];
+    let discount = 0;
+
+    function addToCart(id, name, price) {
+      cart.push({id, name, price});
+      updateCartCount();
+      alert(`✅ ${name} aggiunto al carrello!`);
+    }
+
+    function updateCartCount() {
+      document.getElementById('cart-count').textContent = cart.length;
+    }
+
+    function toggleCart() {
+      const modal = document.getElementById('cart-modal');
+      modal.classList.toggle('hidden');
+      renderCart();
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cart-items');
+      container.innerHTML = '';
+      let subtotal = 0;
+
+      cart.forEach((item, i) => {
+        subtotal += item.price;
+        container.innerHTML += `
+          <div class="flex justify-between items-center">
+            <div>
+              <p class="font-medium">${item.name}</p>
+              <p class="text-sm text-gray-500">${item.price.toFixed(2)} €</p>
+            </div>
+            <button onclick="removeFromCart(${i})" class="text-red-500">Rimuovi</button>
+          </div>`;
+      });
+
+      document.getElementById('subtotal').textContent = subtotal.toFixed(2) + ' €';
+      document.getElementById('total').textContent = (subtotal - discount).toFixed(2) + ' €';
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+      updateCartCount();
+    }
+
+    function applyDiscount() {
+      const code = document.getElementById('discount-code').value.toUpperCase();
+      const msg = document.getElementById('discount-msg');
+      
+      if (code === 'PRIVACY20') {
+        discount = 8; // 20% su media 40€
+        msg.textContent = '✅ 20% sconto applicato!';
+        msg.classList.remove('hidden');
+      } else if (code === 'BUNDLE15') {
+        discount = 10;
+        msg.textContent = '✅ Bundle 15% applicato!';
+        msg.classList.remove('hidden');
+      } else if (code === 'ROMA25') {
+        discount = 5;
+        msg.textContent = '✅ 5 € Roma applicati!';
+        msg.classList.remove('hidden');
+      } else {
+        msg.textContent = '❌ Codice non valido';
+        msg.classList.remove('hidden');
+        return;
+      }
+      renderCart();
+    }
+
+    function checkout() {
+      if (cart.length === 0) return alert('Carrello vuoto!');
+      alert(`🎉 Grazie! Ordine di ${document.getElementById('total').textContent} completato.\n\nNella versione reale qui arriva Stripe/PayPal.`);
+      cart = [];
+      discount = 0;
+      toggleCart();
+      updateCartCount();
+    }
+
+    // Funzione scan simulata (dal precedente)
+    function simulateScan() {
+      alert("✅ Scansione simulata!\nDati letti localmente dal chip NFC e QR embedded.");
+    }
+  </script>
+</body>
+</html>
